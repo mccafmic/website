@@ -1,4 +1,7 @@
-# Website
+# Author Notes
+This project is a fully functional website using PostgreSQL, Express.js, Angular-Cli, and Node.js (PEAN).
+
+## Website
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
