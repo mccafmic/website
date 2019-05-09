@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+const db = require('./queries/queries');
 
 // Get our API routes
 const api = require('./routes/api');
@@ -19,10 +20,20 @@ app.use(express.static(path.join(__dirname, '../../dist/website')));
 // Set our api routes
 app.use('/api', api);
 
+/**
+ * Connect to PostgreSQL
+ */
+app.get('/users', db.getUsers);
+app.get('/users/:id', db.getUserById);
+app.post('/users', db.createUser);
+app.put('/users/:id', db.updateUser);
+app.delete('/users/:id', db.deleteUser);
+
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../../dist/website/index.html'));
 });
+
 
 /**
  * Get port from environment and store in Express.
